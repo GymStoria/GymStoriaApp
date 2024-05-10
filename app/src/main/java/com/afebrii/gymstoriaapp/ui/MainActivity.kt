@@ -1,4 +1,4 @@
-package com.afebrii.gymstoriaapp
+package com.afebrii.gymstoriaapp.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
