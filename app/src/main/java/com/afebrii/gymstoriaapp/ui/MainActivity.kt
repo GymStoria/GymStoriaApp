@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.afebrii.gymstoriaapp.screen.RegisterScreen
 import com.afebrii.gymstoriaapp.ui.theme.GymStoriaAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,17 +18,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         setContent {
-            GymStoriaAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                RegisterScreen()
             }
         }
-    }
 }
 
 @Composable
