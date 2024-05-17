@@ -16,6 +16,7 @@ import com.afebrii.gymstoriaapp.ui.theme.GymStoriaAppTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         setContent {
                 RegisterScreen()
             }
@@ -38,4 +39,4 @@ fun GreetingPreview() {
     }
 }
 
-// Andika Febriansyah
+// dhia irsyad
