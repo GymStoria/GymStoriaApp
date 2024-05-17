@@ -25,9 +25,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.afebrii.gymstoriaapp.R
+import com.afebrii.gymstoriaapp.ui.theme.GymStoriaAppTheme
 
 
 @Composable
@@ -96,12 +98,16 @@ fun LoginScreen()
             horizontalArrangement = Arrangement.SpaceEvenly
 
         ){
-            Image(painter = painterResource(id = R.drawable.google), contentDescription ="Google", modifier = Modifier.size(50.dp).clickable {
-                //Google
-            })
-            Image(painter = painterResource(id = R.drawable.facebook), contentDescription ="Facebook", modifier = Modifier.size(50.dp).clickable {
-                //Facebook
-            })
+            Image(painter = painterResource(id = R.drawable.google), contentDescription ="Google", modifier = Modifier
+                .size(50.dp)
+                .clickable {
+                    //Google
+                })
+            Image(painter = painterResource(id = R.drawable.facebook), contentDescription ="Facebook", modifier = Modifier
+                .size(50.dp)
+                .clickable {
+                    //Facebook
+                })
         }
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -120,6 +126,12 @@ fun LoginScreen()
 
         }
     }
+}
 
-
+@Preview(showBackground = true)
+@Composable
+fun LoginScreenPreview() {
+    GymStoriaAppTheme {
+        LoginScreen()
+    }
 }
