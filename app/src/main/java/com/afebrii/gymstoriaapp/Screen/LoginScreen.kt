@@ -2,6 +2,7 @@ package com.afebrii.gymstoriaapp.Screen
 
 import android.text.style.BackgroundColorSpan
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -25,10 +27,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.afebrii.gymstoriaapp.R
-
+import com.afebrii.gymstoriaapp.ui.theme.GymStoriaAppTheme
 
 @Composable
 fun LoginScreen()
@@ -44,9 +47,17 @@ fun LoginScreen()
 
         Spacer(modifier = Modifier.height(75.dp))
 
-        OutlinedTextField(value = "", onValueChange ={}, label ={
-            Text(text = "Nama Pengguna")
-        },shape = RoundedCornerShape(10.dp) )
+        OutlinedTextField(
+            value = "",
+            onValueChange ={},
+            label ={ Text(text = "Nama Pengguna") },
+            shape = RoundedCornerShape(20.dp),
+            colors = OutlinedTextFieldDefaults.colors(
+                unfocusedBorderColor = Color(0xFF9C27B0)
+            ),
+            modifier = Modifier.size(width = 325.dp, height = 60.dp,)
+
+        )
 
         Spacer(modifier = Modifier.height(10.dp))
 
@@ -54,8 +65,12 @@ fun LoginScreen()
             value = "",
             onValueChange ={},
             label ={ Text(text = "Password") },
-            shape = RoundedCornerShape(10.dp),
-        )
+            shape = RoundedCornerShape(20.dp),
+            colors = OutlinedTextFieldDefaults.colors(
+                unfocusedBorderColor = Color(0xFF9C27B0),
+            ),
+            modifier = Modifier.size(width = 325.dp, height = 60.dp)
+            )
 
         Row(
             modifier = Modifier
@@ -65,7 +80,7 @@ fun LoginScreen()
         ) {
             TextButton(onClick = {})
             {
-                Text(text = "Lupa Kata Sandi ?", fontSize = 13.sp, fontWeight = FontWeight.Medium)
+                Text(text = "Lupa Kata Sandi ?", fontSize = 13.sp, fontWeight = FontWeight.Medium,)
             }
         }
 
@@ -96,12 +111,16 @@ fun LoginScreen()
             horizontalArrangement = Arrangement.SpaceEvenly
 
         ){
-            Image(painter = painterResource(id = R.drawable.google), contentDescription ="Google", modifier = Modifier.size(50.dp).clickable {
-                //Google
-            })
-            Image(painter = painterResource(id = R.drawable.facebook), contentDescription ="Facebook", modifier = Modifier.size(50.dp).clickable {
-                //Facebook
-            })
+            Image(painter = painterResource(id = R.drawable.google), contentDescription ="Google", modifier = Modifier
+                .size(50.dp)
+                .clickable {
+                    //Google
+                })
+            Image(painter = painterResource(id = R.drawable.facebook), contentDescription ="Facebook", modifier = Modifier
+                .size(50.dp)
+                .clickable {
+                    //Facebook
+                })
         }
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -120,6 +139,12 @@ fun LoginScreen()
 
         }
     }
+}
 
-
+@Preview (showBackground = true)
+@Composable
+fun LoginScreenPreview() {
+    GymStoriaAppTheme {
+        LoginScreen()
+    }
 }
