@@ -5,6 +5,6 @@
         <item name="windowSplashScreenAnimatedIcon">@drawable/logo_splash</item>
         <item name="postSplashScreenTheme">@style/Theme.GymStoriaApp</item>
     </style>
-
+  
     <style name="Theme.GymStoriaApp" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
