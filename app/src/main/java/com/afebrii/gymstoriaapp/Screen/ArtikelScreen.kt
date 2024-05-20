@@ -24,9 +24,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.afebrii.gymstoriaapp.R
+import com.afebrii.gymstoriaapp.ui.theme.GymStoriaAppTheme
 import com.afebrii.gymstoriaapp.ui.theme.ungu
 
 sealed class ArtikelContent {
@@ -239,5 +241,13 @@ fun ListItem(index: Int, item: Any) {
                 modifier = Modifier.padding(bottom = 4.dp)
             )
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ArtikelScreenPreview() {
+    GymStoriaAppTheme {
+        ArtikelScreen()
     }
 }
