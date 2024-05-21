@@ -1,5 +1,6 @@
 package com.afebrii.gymstoriaapp.ui
 
+import BerandaScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.afebrii.gymstoriaapp.screen.RegisterScreen
 import com.afebrii.gymstoriaapp.ui.theme.GymStoriaAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,33 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         setContent {
-            GymStoriaAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                BerandaScreen()
             }
         }
-    }
 }
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    GymStoriaAppTheme {
-        Greeting("Android")
-    }
-}
-
-// dhia irsyad
