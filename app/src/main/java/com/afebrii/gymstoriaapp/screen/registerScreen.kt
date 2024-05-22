@@ -1,4 +1,4 @@
-package com.afebrii.gymstoriaapp.screen
+package com.afebrii.gymstoriaapp.Screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -44,14 +44,22 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.afebrii.gymstoriaapp.R
+import com.afebrii.gymstoriaapp.Screen.LoginScreen
+import com.afebrii.gymstoriaapp.navigation.Screen
+import com.afebrii.gymstoriaapp.ui.theme.GymStoriaAppTheme
 import com.afebrii.gymstoriaapp.ui.theme.ungu
 
 
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(
+    navController: NavController,
+    modifier: Modifier = Modifier
+) {
     val poppinsExtraBold = Font(resId = R.font.poppins_extrabold, weight = FontWeight.ExtraBold)
     val poppinsRegular = Font(resId = R.font.poppins_reguler, weight = FontWeight.Normal)
     val poppinsSemiBold = Font(resId = R.font.poppins_semibold, weight = FontWeight.Normal)
@@ -192,7 +200,7 @@ fun RegisterScreen() {
                 .padding(bottom = 8.dp)
         )
 
-        Button(onClick = { /*TODO*/ },
+        Button(onClick = {navController.navigate(Screen.Login.route)},
         colors = ButtonDefaults.buttonColors(ungu),
             contentPadding = PaddingValues(start = 60.dp, end =  60.dp, top = 8.dp, bottom = 8.dp),
             modifier = Modifier.padding(top = 18.dp)
@@ -269,3 +277,11 @@ fun RegisterScreen() {
         )
     }
 }
+
+//@Preview(showBackground = true)
+//@Composable
+//fun RegisterScreenPreview() {
+//    GymStoriaAppTheme {
+//        RegisterScreen()
+//    }
+//}
