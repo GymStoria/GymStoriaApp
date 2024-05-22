@@ -55,23 +55,25 @@ fun ArtikelScreen() {
     var selectedTheme by remember { mutableStateOf("Semua") } // Deklarasi variabel selectedTheme di sini
 
     val menuSehatContent = listOf(
-        MenuSehatItem(R.drawable.logos_facebook, "Menu Sehat 1", "Deskripsi tentang Menu Sehat 1"),
-        MenuSehatItem(R.drawable.logos_facebook, "Menu Sehat 2", "Deskripsi tentang Menu Sehat 2"),
+        MenuSehatItem(R.drawable.smoothie, "Smoothie green", "Bayam, kiwi, pisang, dan susu almond."),
+        MenuSehatItem(R.drawable.sandwich, "Sandwich gandum", "Irisan daging sapi panggang, saus tomat rendah garam, dan selada."),
     )
 
     val tipsContent = listOf(
-        TipsItem(R.drawable.logos_facebook, "Tips 1", "Deskripsi tentang Tips 1"),
-        TipsItem(R.drawable.logos_facebook, "Tips 2", "Deskripsi tentang Tips 2"),
+        TipsItem(R.drawable.istirahat_cukup, "Istirahat yang cukup", "Untuk memberikan tubuh Anda istirahat yang cukup antara sesi latihan "),
+        TipsItem(R.drawable.jadwal_latihan, "Atur jadwal latihan yang konsisten", "Tentukan jadwal rutin untuk latihan"),
     )
 
     val resepContent = listOf(
-        ResepItem(R.drawable.logos_facebook, "Resep 1", "Deskripsi tentang Resep 1"),
-        ResepItem(R.drawable.logos_facebook, "Resep 2", "Deskripsi tentang Resep 2"),
+        ResepItem(R.drawable.oatmeal, "Oatmeal Pisang Almond", "1/2 cangkir oatmeal\n" +
+                "1 cangkir air atau susu almond"),
+        ResepItem(R.drawable.tuna_whole, "Tuna Whole Grain Wrap", "1 tortilla whole grain\n" +
+                "1 kaleng tuna, dan mayones rendah lemak"),
     )
 
     val nutrisiContent = listOf(
-        NutrisiItem(R.drawable.logos_facebook, "Nutrisi 1", "Deskripsi tentang Nutrisi 1"),
-        NutrisiItem(R.drawable.logos_facebook, "Nutrisi 2", "Deskripsi tentang Nutrisi 2"),
+        NutrisiItem(R.drawable.protein, "Protein", "Nutrisi penting untuk membangun dan memperbaiki jaringan otot"),
+        NutrisiItem(R.drawable.karbo, "Karbohidrat", "Sumber utama energi untuk tubuh Anda"),
     )
 
     Column(
@@ -114,7 +116,7 @@ fun ArtikelScreen() {
                 val buttonColors = if (selectedTheme == theme) {
                     ButtonDefaults.buttonColors(ungu)
                 } else {
-                    ButtonDefaults.buttonColors(Color.Gray)
+                    ButtonDefaults.buttonColors(Color.White)
                 }
                 Button(
                     onClick = {
@@ -126,7 +128,7 @@ fun ArtikelScreen() {
                 ) {
                     Text(
                         text = theme,
-                        color = Color.White
+                        color = Color.Black
                     )
                 }
             }
@@ -151,7 +153,7 @@ fun ArtikelScreen() {
                     tipsContent,
                     resepContent,
                     nutrisiContent
-                ) // Tambahkan case untuk tema "Semua" di sini
+                )
                 else -> ArtikelContent.MenuSehatContent(menuSehatContent)
             }
 
@@ -177,7 +179,6 @@ fun ArtikelScreen() {
                     }
                 }
                 is ArtikelContent.SemuaContent -> {
-                    // Menampilkan semua item untuk setiap jenis konten
                     itemsIndexed(content.menuSehatContent) { index, item ->
                         ListItem(index, item)
                     }
@@ -203,10 +204,18 @@ fun ListItem(index: Int, item: Any) {
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(bottom = 28.dp)
+            .padding(bottom = 20.dp)
     ) {
+        val imageId = when (item) {
+            is MenuSehatItem -> item.imageId
+            is TipsItem -> item.imageId
+            is ResepItem -> item.imageId
+            is NutrisiItem -> item.imageId
+            else -> R.drawable.logos_facebook
+        }
+
         Image(
-            painter = painterResource(id = (item as? MenuSehatItem)?.imageId ?: R.drawable.logos_facebook),
+            painter = painterResource(id = imageId),
             contentDescription = "Image $index",
             modifier = Modifier
                 .padding(end = 10.dp)
