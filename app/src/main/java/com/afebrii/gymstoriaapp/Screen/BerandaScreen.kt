@@ -1,3 +1,5 @@
+package com.afebrii.gymstoriaapp.Screen
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -16,8 +18,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -30,16 +34,34 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.afebrii.gymstoriaapp.R
+import com.afebrii.gymstoriaapp.Screen.LoginScreen
+import com.afebrii.gymstoriaapp.Screen.OnBoardingScreen
+//import com.afebrii.gymstoriaapp.Screen.BerandaScreen
+import com.afebrii.gymstoriaapp.navigation.NavigationItem
+import com.afebrii.gymstoriaapp.navigation.Screen
+//import com.afebrii.gymstoriaapp.screen.RegisterScreen
+
+//import com.afebrii.gymstoriaapp.Screen.RegisterScreen
 
 @Composable
-fun BerandaScreen() {
+fun BerandaScreen(
+    modifier: Modifier = Modifier,
+    navController: NavHostController = rememberNavController()
+) {
     var isButton1Clicked by remember { mutableStateOf(true) }
     var isButton2Clicked by remember { mutableStateOf(false) }
     var isButton3Clicked by remember { mutableStateOf(false) }
@@ -77,6 +99,8 @@ fun BerandaScreen() {
         else -> itemsContentTerdekat
     }
 
+
+
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -108,7 +132,7 @@ fun BerandaScreen() {
                 fontWeight = FontWeight.SemiBold,
                 modifier = Modifier
                     .align(Alignment.TopStart)
-                    .padding(top =35.dp, start = 16.dp)
+                    .padding(top = 35.dp, start = 16.dp)
             )
             Icon(
                 imageVector = Icons.Filled.Favorite,
@@ -290,7 +314,8 @@ fun BerandaScreen() {
                             color = Color.Black,
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(top = 8.dp)
+                            modifier = Modifier
+                                .padding(top = 8.dp)
                                 .fillMaxWidth()
 
                         )
@@ -300,7 +325,8 @@ fun BerandaScreen() {
                             text = itemContent.description,
                             color = Color.Gray,
                             fontSize = 14.sp,
-                            modifier = Modifier.padding(top = 4.dp)
+                            modifier = Modifier
+                                .padding(top = 4.dp)
                                 .fillMaxWidth()
                         )
                     }
