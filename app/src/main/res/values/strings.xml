@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GymStoriaApp</string>
+    <string name="menu_beranda">Beranda</string>
+    <string name="menu_artikel">Artikel</string>
+    <string name="menu_keanggotaan">Keanggotaan</string>
+    <string name="menu_pesan">Pesan</string>
+    <string name="menu_profil">Profil</string>
 </resources>

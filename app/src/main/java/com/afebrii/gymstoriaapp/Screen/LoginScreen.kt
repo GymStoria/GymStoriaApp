@@ -1,5 +1,6 @@
 package com.afebrii.gymstoriaapp.Screen
 
+import android.content.Intent
 import android.text.style.BackgroundColorSpan
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -30,13 +31,23 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.afebrii.gymstoriaapp.R
 import com.afebrii.gymstoriaapp.ui.theme.GymStoriaAppTheme
+import com.afebrii.gymstoriaapp.Screen.LoginScreen
+import com.afebrii.gymstoriaapp.Screen.OnBoardingScreen
+import com.afebrii.gymstoriaapp.Screen.RegisterScreen
+import com.afebrii.gymstoriaapp.navigation.Screen
+import com.afebrii.gymstoriaapp.navigation.NavigationItem
 
 
 
 @Composable
-fun LoginScreen()
+fun LoginScreen(
+    modifier: Modifier = Modifier,
+    navController: NavHostController = rememberNavController()
+)
 {
     Column (
         modifier = Modifier.fillMaxSize(),
@@ -91,7 +102,7 @@ fun LoginScreen()
         Spacer(modifier = Modifier.height(15.dp))
 
         Button(
-            onClick = { },
+            onClick = {navController.navigate(Screen.Beranda.route)},
             modifier = Modifier.size(width = 300.dp, height = 40.dp,),
             colors = ButtonDefaults.buttonColors(Color (0xFF8A2BE2)),
         ) {
@@ -134,7 +145,7 @@ fun LoginScreen()
             Text(text = "Tidak Punya Akun ? ", fontSize = 13.sp, fontWeight = FontWeight.Normal)
 
             Text(text = "Daftar", fontSize = 13.sp, fontWeight = FontWeight.ExtraBold, modifier = Modifier.clickable {
-                //Menu Daftar
+                navController.navigate(Screen.Register.route)
             })
 
             Spacer(modifier = Modifier.height(50.dp))

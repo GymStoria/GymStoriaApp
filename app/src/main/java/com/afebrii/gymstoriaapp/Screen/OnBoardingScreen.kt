@@ -14,11 +14,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.afebrii.gymstoriaapp.R
-
-
+import com.afebrii.gymstoriaapp.navigation.Screen
 @Composable
-fun OnBoardingScreen() {
+fun OnBoardingScreen(
+    navController: NavController,
+    modifier: Modifier = Modifier
+) {
     val currentScreen = remember { mutableStateOf(0) } // Track the current screen index
 
     val screens = listOf(
@@ -113,7 +116,7 @@ fun OnBoardingScreen() {
                         if (currentScreen.value < screens.lastIndex) {
                             currentScreen.value += 1
                         } else {
-                            // Handle the completion of onboarding (e.g., show a login screen)
+                            navController.navigate(Screen.Login.route)
                         }
                     },
                     modifier = Modifier.size(width = 150.dp, height = 50.dp),
@@ -139,9 +142,8 @@ data class Screen(
     val description: String,
     val imageResource: Int
 )
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    OnBoardingScreen()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun DefaultPreview() {
+//    OnBoardingScreen(navController)
+//}
