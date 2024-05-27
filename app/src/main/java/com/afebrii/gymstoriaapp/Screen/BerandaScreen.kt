@@ -1,13 +1,18 @@
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -16,6 +21,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -33,10 +39,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.afebrii.gymstoriaapp.R
+import com.afebrii.gymstoriaapp.ui.theme.ungu
 
 @Composable
 fun BerandaScreen() {
@@ -46,27 +54,23 @@ fun BerandaScreen() {
     var isButton4Clicked by remember { mutableStateOf(false) }
 
     val itemsContentTerdekat = listOf(
-        ItemContent("Judul Terdekat 1", "Keterangan Terdekat 1", R.drawable.logos_facebook),
-        ItemContent("Judul Terdekat 2", "Keterangan Terdekat 2", R.drawable.logos_facebook),
-        ItemContent("Judul Terdekat 3", "Keterangan Terdekat 3", R.drawable.logos_facebook),
+        ItemContent("The Jade", "Jl. HZ Mustofa", R.drawable.the_jade, 4.5f, true),
+        ItemContent("Virgo Gym", "Jl. Bebedilan No.27", R.drawable.virgo_gym, 3.5f, false),
     )
 
     val itemsContentPopuler = listOf(
-        ItemContent("Judul Populer 1", "Keterangan Populer 1", R.drawable.logos_facebook),
-        ItemContent("Judul Populer 2", "Keterangan Populer 2", R.drawable.logos_facebook),
-        ItemContent("Judul Populer 3", "Keterangan Populer 3", R.drawable.logos_facebook),
+        ItemContent("Amazon Gym", "Jl. Cikunten", R.drawable.amazon_gym, 4.8f, true),
+        ItemContent("ProMuscle Gym", "Jl. Bantar,Argasari", R.drawable.promuscle, 4.2f, true),
     )
 
     val itemsContentPromo = listOf(
-        ItemContent("Judul Promo 1", "Keterangan Promo 1", R.drawable.logos_facebook),
-        ItemContent("Judul Promo 2", "Keterangan Promo 2", R.drawable.logos_facebook),
-        ItemContent("Judul Promo 3", "Keterangan Promo 3", R.drawable.logos_facebook),
+        ItemContent("OB Fitness", "Jl. Plaza Asia", R.drawable.ob_fitness, 4.0f, false),
+        ItemContent("Latanza Gym", "Jl. Dawagung", R.drawable.latanza, 4.6f, true),
     )
 
     val itemsContentBuka24Jam = listOf(
-        ItemContent("Judul Buka 24 Jam 1", "Keterangan Buka 24 Jam 1", R.drawable.logos_facebook),
-        ItemContent("Judul Buka 24 Jam 2", "Keterangan Buka 24 Jam 2", R.drawable.logos_facebook),
-        ItemContent("Judul Buka 24 Jam 3", "Keterangan Buka 24 Jam 3", R.drawable.logos_facebook),
+        ItemContent("Viky Gym", "Jl. Ibrahim", R.drawable.viky_gym, 3.9f, false),
+        ItemContent("Timor Gym", "Jl. Manggungsari", R.drawable.timor_gym, 4.7f, true),
     )
 
     val itemsToShow = when {
@@ -274,35 +278,82 @@ fun BerandaScreen() {
                             .padding(10.dp)
                             .align(Alignment.CenterHorizontally)
                     ) {
-                        // Gambar
-                        Image(
-                            painter = painterResource(id = itemContent.imageResId),
-                            contentDescription = "Image ${itemContent.title}",
+                        // Box untuk gambar
+                        Box(
                             modifier = Modifier
-                                .size(100.dp)
-                                .clip(shape = RoundedCornerShape(8.dp))
-                                .align(Alignment.CenterHorizontally)
-                        )
-
-                        // Judul teks
-                        Text(
-                            text = itemContent.title,
-                            color = Color.Black,
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(top = 8.dp)
                                 .fillMaxWidth()
+                                .aspectRatio(1.5f) // Rasio lebar-ke-tinggi
+                                .clip(shape = RoundedCornerShape(topStart = 8.dp, topEnd = 8.dp))
+                        ) {
+                            // Gambar
+                            Image(
+                                painter = painterResource(id = itemContent.imageResId),
+                                contentDescription = "Image ${itemContent.title}",
+                                modifier = Modifier.fillMaxSize(),
+                                contentScale = ContentScale.Crop
+                            )
+                        }
 
-                        )
-
-                        // Teks keterangan
-                        Text(
-                            text = itemContent.description,
-                            color = Color.Gray,
-                            fontSize = 14.sp,
-                            modifier = Modifier.padding(top = 4.dp)
+                        Column(
+                            modifier = Modifier
+                                .padding(horizontal = 10.dp, vertical = 8.dp)
                                 .fillMaxWidth()
-                        )
+                        ) {
+                            // Judul teks
+                            Text(
+                                text = itemContent.title,
+                                color = Color.Black,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(top = 8.dp)
+                                    .fillMaxWidth()
+                            )
+
+                            // Teks keterangan
+                            Text(
+                                text = itemContent.description.take(15) + if (itemContent.description.length > 15) "..." else "",
+                                color = Color.Gray,
+                                fontSize = 14.sp,
+                                modifier = Modifier.padding(top = 4.dp)
+                                    .fillMaxWidth(),
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
+                            )
+
+                            // Rating
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxWidth().padding(top = 4.dp) // Tambahkan padding top di sini
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Filled.Star,
+                                    contentDescription = "Rating",
+                                    tint = Color.Yellow,
+                                    modifier = Modifier.size(20.dp)
+                                )
+                                Text(
+                                    text = "${itemContent.rating}",
+                                    color = Color.Black,
+                                    fontSize = 14.sp,
+                                    modifier = Modifier.padding(start = 4.dp) // Tambahkan padding start di sini
+                                )
+                                // Status "Sedang Ramai" atau "Sepi"
+                                Box(
+                                    modifier = Modifier
+                                        .padding(start = 8.dp)
+                                        .clip(shape = RoundedCornerShape(8.dp))
+                                        .background(if (itemContent.isBusy) ungu else Color.Gray)
+                                        .wrapContentSize(Alignment.Center) // Membuat latar belakang menyesuaikan ukuran konten
+                                ) {
+                                    Text(
+                                        text = if (itemContent.isBusy) "Sedang Ramai" else "Sepi",
+                                        color = Color.White,
+                                        fontSize = 10.sp,
+                                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                                    )
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -310,7 +361,7 @@ fun BerandaScreen() {
     }
 }
 
-data class ItemContent(val title: String, val description: String, val imageResId: Int)
+data class ItemContent(val title: String, val description: String, val imageResId: Int, val rating: Float, val isBusy: Boolean)
 
 @Preview(showBackground = true)
 @Composable
