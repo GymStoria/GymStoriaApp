@@ -1,5 +1,7 @@
 package com.afebrii.gymstoriaapp.ui
 
+import BerandaScreen
+import ProfileScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,6 +17,7 @@ import com.afebrii.gymstoriaapp.Screen.LoginScreen
 import com.afebrii.gymstoriaapp.Screen.OnBoardingScreen
 import com.afebrii.gymstoriaapp.Screen.RegisterScreen
 //import com.afebrii.gymstoriaapp.Screen.BerandaScreen
+import com.afebrii.gymstoriaapp.Screen.ArtikelScreen
 import com.afebrii.gymstoriaapp.ui.theme.GymStoriaAppTheme
 import com.afebrii.gymstoriaapp.Screen.GymStoria
 
@@ -24,6 +27,7 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         setContent {
                 GymStoria()
+                ArtikelScreen()
             }
         }
 }
