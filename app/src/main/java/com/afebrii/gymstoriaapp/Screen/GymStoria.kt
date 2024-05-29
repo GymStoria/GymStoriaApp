@@ -23,7 +23,7 @@ import androidx.compose.material3.NavigationBarItem
 import com.afebrii.gymstoriaapp.navigation.Screen
 import com.afebrii.gymstoriaapp.navigation.NavigationItem
 import com.afebrii.gymstoriaapp.R
-import com.afebrii.gymstoriaapp.Screen.RegisterScreen
+import com.afebrii.gymstoriaapp.Screen.*
 import androidx.compose.material3.Icon
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.compose.material3.Text
@@ -70,6 +70,10 @@ fun GymStoria(
             composable(Screen.Artikel.route) {
                 ArtikelScreen()
             }
+
+            composable(Screen.Profile.route) {
+                ProfileScreen()
+            }
         }
     }
 }
@@ -109,7 +113,7 @@ private fun BottomBar(
             NavigationItem(
                 title = stringResource(id = R.string.menu_profil),
                 icon = Icons.Default.Person,
-                screen = Screen.Artikel
+                screen = Screen.Profile
             )
         )
         navigationItems.map { item ->

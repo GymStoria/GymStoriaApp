@@ -326,6 +326,7 @@ fun BerandaScreen(
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier
                                 .padding(top = 8.dp)
+                        )
                         Column(
                             modifier = Modifier
                                 .padding(horizontal = 10.dp, vertical = 8.dp)
