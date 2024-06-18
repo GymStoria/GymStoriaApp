@@ -12,15 +12,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.afebrii.gymstoriaapp.R
-import com.afebrii.gymstoriaapp.navigation.Screen
 @Composable
 fun OnBoardingScreen(
-    navController: NavController,
-    modifier: Modifier = Modifier
+    onMasukClick:()-> Unit
 ) {
     val currentScreen = remember { mutableStateOf(0) } // Track the current screen index
 
@@ -116,7 +112,7 @@ fun OnBoardingScreen(
                         if (currentScreen.value < screens.lastIndex) {
                             currentScreen.value += 1
                         } else {
-                            navController.navigate(Screen.Login.route)
+                            onMasukClick()
                         }
                     },
                     modifier = Modifier.size(width = 150.dp, height = 50.dp),
