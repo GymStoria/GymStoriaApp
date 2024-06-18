@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.google.gms.google-services")
 
 }
 
@@ -64,7 +65,11 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     implementation("androidx.compose.foundation:foundation:1.6.7")
     implementation ("com.google.android.material:material:1.5.0")
+    implementation("com.google.accompanist:accompanist-navigation-material:0.23.1")
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.firebase.database)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.androidx.runtime.livedata)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

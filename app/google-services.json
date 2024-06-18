@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "509418670586",
+    "firebase_url": "https://gymstoriaapp-default-rtdb.firebaseio.com",
+    "project_id": "gymstoriaapp",
+    "storage_bucket": "gymstoriaapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509418670586:android:8c71017333c4be36e67c43",
+        "android_client_info": {
+          "package_name": "com.afebrii.gymstoriaapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBadc5cWw5iYZH0LE1P2D5I0xKsHnRlC0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
