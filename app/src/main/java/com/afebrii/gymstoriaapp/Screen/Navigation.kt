@@ -29,7 +29,7 @@ sealed class Routee(val route: String) {
     class PesanScreen : Routee("pesan")
     class PesanDetailScreen : Routee("pesandetail")
 }
-//navigasi
+//navigasii
 @Composable
 fun Navigation(navHostController: NavHostController) {
     NavHost(
